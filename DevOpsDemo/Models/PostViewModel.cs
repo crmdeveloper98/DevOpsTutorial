@@ -9,6 +9,8 @@ namespace DevOpsDemo.Models
 
         [StringLength(5000)]
         public string Description {get; set;}
+
+        [StringLength(100)]
         public string Author {get; set;}
     }
 }
