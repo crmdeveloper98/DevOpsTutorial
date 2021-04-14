@@ -2,14 +2,15 @@ using DevOpsDemo.Controllers;
 using DevOpsDemo.Models;
 using DevOpsDemo.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
 namespace DevOpsDemo.Tests
 {
-    public class PostTestController
+    public class PostTestController : IDisposable
     {
-        private readonly PostRepository repository;
+        PostRepository repository;
 
         public PostTestController()
         {
@@ -58,6 +59,11 @@ namespace DevOpsDemo.Tests
             Assert.Equal(4, model.Count);
             Assert.Equal(101, model[0].PostId);
             Assert.Equal("DevOps Demo Title 1", model[0].Title);
+        }
+
+        public void Dispose()
+        {
+            repository = null;
         }
     }
 }
